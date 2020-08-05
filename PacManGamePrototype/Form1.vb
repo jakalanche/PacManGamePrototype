@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     Dim direction As String 'Current direction as string
-    Dim pacmanAnimation As String ' Current Animation eg. up, down, left right.
+    Dim pacmanAnimation As Integer = 1 ' Current Animation eg. up, down, left right. 0 - 5
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.Up Then
@@ -25,22 +25,32 @@
         'Handle 
         If direction = "up" Then
             pacman.Location = New Point(pacman.Location.X, pacman.Location.Y + 1)
-            If pacmanAnimation = "1" Then
-                'pacman.BackgroundImage = My.Resources.pacman_eat
-                'pacmanAnimation = "0"
-            Else
-                'pacman.BackgroundImage = My.Resources.pacman_eat1
-                'pacmanAnimation = "1"
-            End If
+            pacmanAnimation = 1
         End If
-            If direction = "down" Then
+        If direction = "down" Then
             pacman.Location = New Point(pacman.Location.X, pacman.Location.Y - 1)
+            pacmanAnimation = 2
         End If
         If direction = "left" Then
             pacman.Location = New Point(pacman.Location.X - 1, pacman.Location.Y)
+            pacmanAnimation = 3
         End If
         If direction = "right" Then
             pacman.Location = New Point(pacman.Location.X + 1, pacman.Location.Y)
+            pacmanAnimation = 4
+        End If
+        animationChange(pacmanAnimation)
+    End Sub
+    Private Sub animationChange(pacAni)
+        If pacAni = 1 Then 'up
+            'pacman.BackgroundImage = My.Resources.pacman_up
+        ElseIf pacAni = 2 Then 'down
+            'pacman.BackgroundImage = My.Resources.pacman_down
+        ElseIf pacAni = 3 Then 'left
+            pacman.BackgroundImage = My.Resources.pacman_left
+        ElseIf pacAni = 4 Then 'right
+            pacman.BackgroundImage = My.Resources.pacman_right
         End If
     End Sub
+
 End Class

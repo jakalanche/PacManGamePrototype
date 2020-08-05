@@ -43,10 +43,10 @@ Partial Class Form1
         '
         'pacman
         '
-        Me.pacman.Image = Global.PacManGamePrototype.My.Resources.Resources.pacman_eat
+        Me.pacman.Image = Global.PacManGamePrototype.My.Resources.Resources.pacman_right
         Me.pacman.Location = New System.Drawing.Point(41, 126)
         Me.pacman.Name = "pacman"
-        Me.pacman.Size = New System.Drawing.Size(19, 18)
+        Me.pacman.Size = New System.Drawing.Size(16, 16)
         Me.pacman.TabIndex = 1
         Me.pacman.TabStop = False
         '

@@ -121,10 +121,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\sprites\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\maze\tile001.png" />
+    <None Include="Resources\pacman_left.gif" />
+    <None Include="Resources\pacman_right.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
