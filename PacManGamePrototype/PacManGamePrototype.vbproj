@@ -124,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\maze\tile001.png" />
+    <None Include="Resources\pacman_up.gif" />
+    <None Include="Resources\pacman_down.gif" />
+    <None Include="Resources\pac_neutral.png" />
     <None Include="Resources\pacman_left.gif" />
     <None Include="Resources\pacman_right.gif" />
   </ItemGroup>

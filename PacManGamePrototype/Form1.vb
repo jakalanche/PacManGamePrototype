@@ -1,8 +1,9 @@
 ﻿Public Class Form1
-    Dim direction As String 'Current direction as string
-    Dim pacmanAnimation As Integer = 1 ' Current Animation eg. up, down, left right. 0 - 5
+    Dim direction As String = "" 'Current direction as string
+    Dim pacmanAnimation As Integer = 0 ' Current Animation eg. up, down, left right. 0 - 5
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        MsgBox(e.KeyCode.ToString)
         If e.KeyCode = Keys.Up Then
             direction = "up"
         End If
@@ -43,13 +44,15 @@
     End Sub
     Private Sub animationChange(pacAni)
         If pacAni = 1 Then 'up
-            'pacman.BackgroundImage = My.Resources.pacman_up
+            pacman.BackgroundImage = My.Resources.pacman_up
         ElseIf pacAni = 2 Then 'down
-            'pacman.BackgroundImage = My.Resources.pacman_down
+            pacman.BackgroundImage = My.Resources.pacman_down
         ElseIf pacAni = 3 Then 'left
             pacman.BackgroundImage = My.Resources.pacman_left
         ElseIf pacAni = 4 Then 'right
             pacman.BackgroundImage = My.Resources.pacman_right
+        Else
+            pacman.BackgroundImage = My.Resources.pac_neutral
         End If
     End Sub
 
