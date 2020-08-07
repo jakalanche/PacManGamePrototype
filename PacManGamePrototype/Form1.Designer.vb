@@ -26,9 +26,9 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.pacman = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.maze = New System.Windows.Forms.PictureBox()
         CType(Me.pacman, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.maze, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Timer1
@@ -45,15 +45,18 @@ Partial Class Form1
         Me.pacman.TabIndex = 1
         Me.pacman.TabStop = False
         '
-        'PictureBox1
+        'maze
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(224, 288)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
+        Me.maze.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.maze.Image = CType(resources.GetObject("maze.Image"), System.Drawing.Image)
+        Me.maze.Location = New System.Drawing.Point(0, 0)
+        Me.maze.Name = "maze"
+        Me.maze.Size = New System.Drawing.Size(227, 248)
+        Me.maze.TabIndex = 0
+        Me.maze.TabStop = False
+        Me.maze.Visible = False
         '
         'Form1
         '
@@ -61,16 +64,15 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(224, 288)
         Me.Controls.Add(Me.pacman)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.maze)
         Me.Name = "Form1"
         Me.Text = "Pacman"
         CType(Me.pacman, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.maze, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents pacman As PictureBox
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents maze As PictureBox
 End Class
