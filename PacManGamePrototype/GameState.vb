@@ -1,0 +1,3 @@
+﻿Class GameState
+
+End Class

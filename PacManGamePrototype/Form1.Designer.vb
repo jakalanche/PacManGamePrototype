@@ -34,14 +34,15 @@ Partial Class Form1
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 10
+        Me.Timer1.Interval = 20
         '
         'pacman
         '
         Me.pacman.Image = Global.PacManGamePrototype.My.Resources.Resources.pac_neutral
-        Me.pacman.Location = New System.Drawing.Point(104, 210)
+        Me.pacman.Location = New System.Drawing.Point(105, 180)
         Me.pacman.Name = "pacman"
-        Me.pacman.Size = New System.Drawing.Size(16, 16)
+        Me.pacman.Size = New System.Drawing.Size(8, 8)
+        Me.pacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pacman.TabIndex = 1
         Me.pacman.TabStop = False
         '
@@ -54,6 +55,7 @@ Partial Class Form1
         Me.maze.Location = New System.Drawing.Point(0, 0)
         Me.maze.Name = "maze"
         Me.maze.Size = New System.Drawing.Size(227, 248)
+        Me.maze.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.maze.TabIndex = 0
         Me.maze.TabStop = False
         Me.maze.Visible = False
@@ -62,7 +64,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(224, 288)
+        Me.ClientSize = New System.Drawing.Size(275, 288)
         Me.Controls.Add(Me.pacman)
         Me.Controls.Add(Me.maze)
         Me.Name = "Form1"
@@ -70,6 +72,7 @@ Partial Class Form1
         CType(Me.pacman, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.maze, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents pacman As PictureBox
