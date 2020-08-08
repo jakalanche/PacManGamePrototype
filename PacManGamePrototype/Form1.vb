@@ -2,6 +2,7 @@
 Imports System.Windows.Forms
 'Imports System.Drawing.Rectangle
 Public Class Form1
+    Dim score As Integer
     Dim totalLives = 3
     Dim direction As String = "" 'Current direction as string
     Dim pacmanAnimation As Integer = 0 ' Current Animation eg. up, down, left right. 0 - 5
@@ -71,7 +72,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         'PictureBox1.
-        pacman.SetBounds(10, 10, 4, 4)
+        pacman.SetBounds(8, 8, 8, 8)
         PlaceDots()
         PlaceWalls()
         DisplayMaze()
@@ -113,7 +114,7 @@ Public Class Form1
             AnimationChange(0)
         End If
         'PacmanCollision()
-        LivesCount()
+        'LivesCount()
         For Each wall In obstacles
             If pacman.Bounds.IntersectsWith(wall.Bounds) Then
                 If direction = "up" Then
@@ -133,15 +134,8 @@ Public Class Form1
                 direction = "neutral"
             End If
         Next
-
-
-
-        For Each dot In obstacles
-            If pacman.Bounds.IntersectsWith(dot.Bounds) Then
-                MsgBox("Yes")
-            End If
-        Next
-
+        RemoveDot()
+        Label1.Text = "Score: " + score.ToString
 
     End Sub
     Private Sub AnimationChange(pacAni)
@@ -212,25 +206,52 @@ Public Class Form1
         Next
 
     End Sub
+    Sub RemoveDot()
+        Dim dotDelete As PictureBox
+        For Each pb In dots
+
+            If dots.Contains(pb) Then
+                If pacman.Bounds.IntersectsWith(pb.Bounds) Then
+                    score += 1
+                    dotDelete = pb
+                    Controls.Remove(pb) 'remove from screen
+                    'remove from list
+                End If
+            End If
+        Next
+        dots.Remove(dotDelete)
+
+        ''Dim dotsArray(mapArray.GetUpperBound(0), mapArray.GetUpperBound(1)) As PictureBox
+        'For a = dotsArray.GetLowerBound(0) To dotsArray.GetUpperBound(0)
+        '    For b = dotsArray.GetLowerBound(1) To dotsArray.GetUpperBound(1)
+        '        If pacman.Bounds.IntersectsWith(dotsArray(a, b).Bounds) Then
+        '            score += 1
+        '        End If
+        '    Next
+        'Next
+    End Sub
+
+
 
 
     Sub PacmanCollision()
-        'Dim collArray(wallArray.GetUpperBound(0), wallArray.GetUpperBound(1)) As PictureBox
-        Dim x As Integer = 8 'x axis
-        Dim y As Integer = 8 'y axis
-        Dim aLen As Integer = mapArray.GetUpperBound(0)
-        Dim bLen As Integer = mapArray.GetUpperBound(1)
-        For a = wallArray.GetLowerBound(0) To wallArray.GetUpperBound(0)
-            For b = wallArray.GetLowerBound(1) To wallArray.GetUpperBound(1)
-                Dim wall As PictureBox = wallArray(a, b)
-                'If pacman.Bounds.IntersectsWith(wall.Bounds) Then
-                '    AnimationChange(0)
-                'End If
-                'Dim pb As PictureBox = wallArray(a, b)
-                'If pb.bound Then
-            Next
-        Next
+        ''Dim collArray(wallArray.GetUpperBound(0), wallArray.GetUpperBound(1)) As PictureBox
+        'Dim x As Integer = 8 'x axis
+        'Dim y As Integer = 8 'y axis
+        'Dim aLen As Integer = mapArray.GetUpperBound(0)
+        'Dim bLen As Integer = mapArray.GetUpperBound(1)
+        'For a = mapArray.GetLowerBound(0) To mapArray.GetUpperBound(0)
+        '    For b = mapArray.GetLowerBound(1) To mapArray.GetUpperBound(1)
+        '        Dim wall As PictureBox = wallArray(a, b)
+        '        'If pacman.Bounds.IntersectsWith(wall.Bounds) Then
+        '        '    AnimationChange(0)
+        '        'End If
+        '        'Dim pb As PictureBox = wallArray(a, b)
+        '        'If pb.bound Then
+        '    Next
+        'Next
     End Sub
+
     'Generate map data
     'For X = 0 To 99
     'For Y = 0 To 99
@@ -239,19 +260,13 @@ Public Class Form1
     'Next
 
 
-    Sub RemoveAllDots()
-        'For i = 1 To row
-        '    For j = 1 To col
-        '        Controls.Remove(dots(i, j))
-        '    Next
-        'Next
-    End Sub
 
-    Sub LivesCount()
-        For i = 0 To totalLives
-            'Dim x = 0 'lopp and increase distnce for each. 
-            'Dim live As New Label
-            'live.Image = My.Resources.
-        Next
-    End Sub
+
+    'Sub LivesCount()
+    '    For i = 0 To totalLives
+    '        'Dim x = 0 'lopp and increase distnce for each. 
+    '        'Dim live As New Label
+    '        'live.Image = My.Resources.
+    '    Next
+    'End Sub
 End Class
