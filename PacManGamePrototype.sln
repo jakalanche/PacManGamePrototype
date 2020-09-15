@@ -8,13 +8,25 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		PacmanPrototype|Any CPU = PacmanPrototype|Any CPU
+		PacmanPrototype|x64 = PacmanPrototype|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Debug|x64.ActiveCfg = Debug|x64
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Debug|x64.Build.0 = Debug|x64
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.PacmanPrototype|Any CPU.ActiveCfg = PacmanPrototype|Any CPU
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.PacmanPrototype|Any CPU.Build.0 = PacmanPrototype|Any CPU
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.PacmanPrototype|x64.ActiveCfg = PacmanPrototype|x64
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.PacmanPrototype|x64.Build.0 = PacmanPrototype|x64
 		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Release|x64.ActiveCfg = Release|x64
+		{8ECE567F-AC48-4291-9C99-7DA319E9A387}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

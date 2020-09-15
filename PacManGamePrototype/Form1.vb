@@ -45,6 +45,7 @@ Public Class Form1
     Dim dots As List(Of PictureBox) = New List(Of PictureBox)
     Dim dotsArray(a, b) As PictureBox 'dots picturebox array
     Dim wallArray(a, b) As PictureBox ' 
+    Dim timerVal As Double = 0.0
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'MsgBox(e.KeyCode.ToString)
@@ -76,7 +77,6 @@ Public Class Form1
         PlaceDots()
         PlaceWalls()
         DisplayMaze()
-
     End Sub
 
     Private Sub DisplayMaze()
@@ -136,8 +136,8 @@ Public Class Form1
         Next
         RemoveDot()
         Label1.Text = "Score: " + score.ToString
-
     End Sub
+
     Private Sub AnimationChange(pacAni)
         If pacAni = 1 Then 'up
             pacman.Image = My.Resources.pacman_up
@@ -251,6 +251,12 @@ Public Class Form1
         '    Next
         'Next
     End Sub
+
+    Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
+        timerVal += 0.1
+        Label2.Text = timerVal.ToString
+    End Sub
+
 
     'Generate map data
     'For X = 0 To 99
