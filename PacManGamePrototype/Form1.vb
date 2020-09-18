@@ -2,10 +2,10 @@
 Imports System.Windows.Forms
 'Imports System.Drawing.Rectangle
 Public Class Form1
-    Dim score As Integer
-    Dim totalLives = 3
-    Dim direction As String = "" 'Current direction as string
-    Dim pacmanAnimation As Integer = 0 ' Current Animation eg. up, down, left right. 0 - 5
+    Shared score As Integer
+    Shared totalLives As Integer = 3
+    Shared direction As String = "" 'Current direction as string
+    Shared pacmanAnimation As Integer = 0 ' Current Animation eg. up, down, left right. 0 - 5
     Public Shared mapArray(,) As Integer = New Integer(,) _
                                                         {       '1           5              10             15             20             25
                                                         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, '1
@@ -39,13 +39,13 @@ Public Class Form1
                                                         {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0},
                                                         {0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0}, '30
                                                         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}
-    Dim a As Integer 'column number
-    Dim b As Integer 'row number
-    Dim obstacles As List(Of PictureBox) = New List(Of PictureBox)
-    Dim dots As List(Of PictureBox) = New List(Of PictureBox)
-    Dim dotsArray(a, b) As PictureBox 'dots picturebox array
-    Dim wallArray(a, b) As PictureBox ' 
-    Dim timerVal As Double = 0.0
+    Shared a As Integer 'column number
+    Shared b As Integer 'row number
+    Shared obstacles As List(Of PictureBox) = New List(Of PictureBox)
+    Shared dots As List(Of PictureBox) = New List(Of PictureBox)
+    Shared dotsArray(a, b) As PictureBox 'dots picturebox array
+    Shared wallArray(a, b) As PictureBox ' 
+    Shared timerVal As Double = 0.0
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'MsgBox(e.KeyCode.ToString)
@@ -67,7 +67,7 @@ Public Class Form1
             Me.Close()
         End If
         'If Check if possibel first
-        AnimationChange(pacmanAnimation)
+        PacmanView.AnimationChange(pacmanAnimation)
         'End If
     End Sub
 
@@ -76,21 +76,8 @@ Public Class Form1
         pacman.SetBounds(8, 8, 8, 8)
         PlaceDots()
         PlaceWalls()
-        DisplayMaze()
+        PacmanView.DisplayMaze()
     End Sub
-
-    Private Sub DisplayMaze()
-        Dim maze As Label = New Label With {
-            .BackgroundImage = My.Resources.maze,
-            .Location = New Point(0, 0),
-            .Width = 224,
-            .Height = 288
-        }
-        maze.SendToBack()
-        Controls.Add(maze)
-
-    End Sub
-
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         'Handle 
@@ -111,7 +98,7 @@ Public Class Form1
         End If
         If direction = "neutral" Then
             pacman.Location = New Point(pacman.Location.X, pacman.Location.Y)
-            AnimationChange(0)
+            PacmanView.AnimationChange(0)
         End If
         'PacmanCollision()
         'LivesCount()
@@ -130,29 +117,13 @@ Public Class Form1
                     pacman.Location = New Point(pacman.Location.X - 1, pacman.Location.Y)
                     direction = "neutral"
                 End If
-                AnimationChange(0)
+                PacmanView.AnimationChange(0)
                 direction = "neutral"
             End If
         Next
         RemoveDot()
         Label1.Text = "Score: " + score.ToString
     End Sub
-
-    Private Sub AnimationChange(pacAni)
-        If pacAni = 1 Then 'up
-            pacman.Image = My.Resources.pacman_up
-        ElseIf pacAni = 2 Then 'down
-            pacman.Image = My.Resources.pacman_down
-        ElseIf pacAni = 3 Then 'left
-            pacman.Image = My.Resources.pacman_left
-        ElseIf pacAni = 4 Then 'right
-            pacman.Image = My.Resources.pacman_right
-        ElseIf pacAni = 0 Then
-            pacman.Image = My.Resources.pac_neutral
-        End If
-        pacman.Refresh()
-    End Sub
-
 
     Sub PlaceDots()
         Dim dotsArray(mapArray.GetUpperBound(0), mapArray.GetUpperBound(1)) As PictureBox
@@ -220,7 +191,12 @@ Public Class Form1
             End If
         Next
         dots.Remove(dotDelete)
+        If dots.Count = 0 Then
+            Dim finalScore = timerVal + Double.Parse(Label1.Text)
+            MessageBox.Show("Game Complete" + finalScore.ToString)
+            Timer1.Interval = 0
 
+        End If
         ''Dim dotsArray(mapArray.GetUpperBound(0), mapArray.GetUpperBound(1)) As PictureBox
         'For a = dotsArray.GetLowerBound(0) To dotsArray.GetUpperBound(0)
         '    For b = dotsArray.GetLowerBound(1) To dotsArray.GetUpperBound(1)
@@ -231,48 +207,9 @@ Public Class Form1
         'Next
     End Sub
 
-
-
-
-    Sub PacmanCollision()
-        ''Dim collArray(wallArray.GetUpperBound(0), wallArray.GetUpperBound(1)) As PictureBox
-        'Dim x As Integer = 8 'x axis
-        'Dim y As Integer = 8 'y axis
-        'Dim aLen As Integer = mapArray.GetUpperBound(0)
-        'Dim bLen As Integer = mapArray.GetUpperBound(1)
-        'For a = mapArray.GetLowerBound(0) To mapArray.GetUpperBound(0)
-        '    For b = mapArray.GetLowerBound(1) To mapArray.GetUpperBound(1)
-        '        Dim wall As PictureBox = wallArray(a, b)
-        '        'If pacman.Bounds.IntersectsWith(wall.Bounds) Then
-        '        '    AnimationChange(0)
-        '        'End If
-        '        'Dim pb As PictureBox = wallArray(a, b)
-        '        'If pb.bound Then
-        '    Next
-        'Next
-    End Sub
-
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
         timerVal += 0.1
         Label2.Text = timerVal.ToString
     End Sub
 
-
-    'Generate map data
-    'For X = 0 To 99
-    'For Y = 0 To 99
-    '    DrawTile(MapTiles.Images(MapData(X,Y)), X x 32, Y x 32)
-    'Next
-    'Next
-
-
-
-
-    'Sub LivesCount()
-    '    For i = 0 To totalLives
-    '        'Dim x = 0 'lopp and increase distnce for each. 
-    '        'Dim live As New Label
-    '        'live.Image = My.Resources.
-    '    Next
-    'End Sub
 End Class
