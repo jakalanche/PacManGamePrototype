@@ -45,7 +45,10 @@ Public Class Form1
     Shared dots As List(Of PictureBox) = New List(Of PictureBox)
     Shared dotsArray(a, b) As PictureBox 'dots picturebox array
     Shared wallArray(a, b) As PictureBox ' 
-    Shared timerVal As Double = 200.0
+    Shared timerVal As Double = 300.0
+    Shared highScore As Integer = 0
+    Shared highScorePlayer As String = ""
+    Shared currentPlayer
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'MsgBox(e.KeyCode.ToString)
@@ -196,7 +199,13 @@ Public Class Form1
             'MessageBox.Show("Game Complete" + finalScore.ToString)
             MessageBox.Show("Finished Game")
             GameTimer.Stop()
-            GameTimer.Dispose()
+            'GameTimer.Dispose()
+            Timer1.Stop()
+            'Timer1
+
+            If score > highScore Then
+
+            End If
 
 
         End If
@@ -211,8 +220,16 @@ Public Class Form1
     End Sub
 
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
-        timerVal -= 0.1
-        Label2.Text = Math.Round(timerVal, 1).ToString
+
+        If timerVal <> 0 Then
+            timerVal -= 0.1
+            Label2.Text = Math.Round(timerVal, 1).ToString
+        Else
+            timerVal = 0
+        End If
+
     End Sub
+
+
 
 End Class
