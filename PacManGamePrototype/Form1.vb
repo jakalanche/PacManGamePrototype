@@ -45,7 +45,7 @@ Public Class Form1
     Shared dots As List(Of PictureBox) = New List(Of PictureBox)
     Shared dotsArray(a, b) As PictureBox 'dots picturebox array
     Shared wallArray(a, b) As PictureBox ' 
-    Shared timerVal As Double = 0.0
+    Shared timerVal As Double = 200.0
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'MsgBox(e.KeyCode.ToString)
@@ -192,9 +192,12 @@ Public Class Form1
         Next
         dots.Remove(dotDelete)
         If dots.Count = 0 Then
-            Dim finalScore = timerVal + Double.Parse(Label1.Text)
-            MessageBox.Show("Game Complete" + finalScore.ToString)
-            Timer1.Interval = 0
+            'Dim finalScore = timerVal + Double.Parse(Label1.Text)
+            'MessageBox.Show("Game Complete" + finalScore.ToString)
+            MessageBox.Show("Finished Game")
+            GameTimer.Stop()
+            GameTimer.Dispose()
+
 
         End If
         ''Dim dotsArray(mapArray.GetUpperBound(0), mapArray.GetUpperBound(1)) As PictureBox
@@ -208,8 +211,8 @@ Public Class Form1
     End Sub
 
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
-        timerVal += 0.1
-        Label2.Text = timerVal.ToString
+        timerVal -= 0.1
+        Label2.Text = Math.Round(timerVal, 1).ToString
     End Sub
 
 End Class
