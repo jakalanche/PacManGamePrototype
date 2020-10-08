@@ -28,13 +28,15 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GameTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Ghost1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pacman = New System.Windows.Forms.PictureBox()
         Me.maze = New System.Windows.Forms.PictureBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        CType(Me.Ghost1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -68,6 +70,33 @@ Partial Class Form1
         'GameTimer
         '
         Me.GameTimer.Enabled = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(12, 249)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(38, 13)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Score:"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(93, 249)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(33, 13)
+        Me.Label4.TabIndex = 6
+        Me.Label4.Text = "Time:"
+        '
+        'Ghost1
+        '
+        Me.Ghost1.Image = Global.PacManGamePrototype.My.Resources.Resources.GHOST_Blue__DOWNWARD01
+        Me.Ghost1.Location = New System.Drawing.Point(170, 115)
+        Me.Ghost1.Name = "Ghost1"
+        Me.Ghost1.Size = New System.Drawing.Size(8, 8)
+        Me.Ghost1.TabIndex = 7
+        Me.Ghost1.TabStop = False
         '
         'PictureBox3
         '
@@ -123,29 +152,12 @@ Partial Class Form1
         Me.maze.TabStop = False
         Me.maze.Visible = False
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 249)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(38, 13)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Score:"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(93, 249)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(33, 13)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Time:"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(227, 288)
+        Me.Controls.Add(Me.Ghost1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -157,6 +169,7 @@ Partial Class Form1
         Me.Controls.Add(Me.maze)
         Me.Name = "Form1"
         Me.Text = "Pacman"
+        CType(Me.Ghost1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -177,4 +190,5 @@ Partial Class Form1
     Friend WithEvents GameTimer As Timer
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents Ghost1 As PictureBox
 End Class

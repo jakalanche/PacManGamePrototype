@@ -1,10 +1,11 @@
-﻿
+﻿Imports Microsoft.Win32
 Imports System.Windows.Forms
 'Imports System.Drawing.Rectangle
 Public Class Form1
     Shared score As Integer
     Shared totalLives As Integer = 3
     Shared direction As String = "" 'Current direction as string
+    Shared ghostDirection As String = "up"
     Shared pacmanAnimation As Integer = 0 ' Current Animation eg. up, down, left right. 0 - 5
     Public Shared mapArray(,) As Integer = New Integer(,) _
                                                         {       '1           5              10             15             20             25
@@ -46,9 +47,11 @@ Public Class Form1
     Shared dotsArray(a, b) As PictureBox 'dots picturebox array
     Shared wallArray(a, b) As PictureBox ' 
     Shared timerVal As Double = 300.0
-    Shared highScore As Integer = 0
-    Shared highScorePlayer As String = ""
+    Shared highScore As Integer
+    Shared highScorePlayer As String
     Shared currentPlayer
+    Public Shared regName As RegistryKey
+    Public Shared regScore As RegistryKey
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'MsgBox(e.KeyCode.ToString)
@@ -82,6 +85,60 @@ Public Class Form1
         PacmanView.DisplayMaze()
     End Sub
 
+    Private Sub GhostDir()
+        '1up, 2down, 3left, 4right
+        If direction = "up" Then
+            Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y - 1)
+
+        End If
+        If direction = "down" Then
+            Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y + 1)
+
+        End If
+        If direction = "left" Then
+            Ghost1.Location = New Point(Ghost1.Location.X - 1, Ghost1.Location.Y)
+
+        End If
+        If direction = "right" Then
+            Ghost1.Location = New Point(Ghost1.Location.X + 1, Ghost1.Location.Y)
+        End If
+        If direction = "neutral" Then
+            Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y)
+        End If
+    End Sub
+    'Ghost collision detection
+    Private Sub GhostColl()
+        For Each wall In obstacles
+            If Ghost1.Bounds.IntersectsWith(wall.Bounds) Then
+                If ghostDirection = "up" Then
+                    Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y + 1)
+                    direction = "neutral"
+                ElseIf ghostDirection = "down" Then
+                    Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y - 1)
+                    direction = "neutral"
+                ElseIf ghostDirection = "left" Then
+                    Ghost1.Location = New Point(Ghost1.Location.X + 1, Ghost1.Location.Y)
+                    direction = "neutral"
+                ElseIf ghostDirection = "right" Then
+                    Ghost1.Location = New Point(Ghost1.Location.X - 1, Ghost1.Location.Y)
+                    direction = "neutral"
+                End If
+                'Handle random direction after collision
+                Dim dirNum As Integer = CInt(Math.Ceiling(Rnd() * 4)) + 1
+                If dirNum = 1 Then
+                    ghostDirection = "up"
+                ElseIf dirNum = 2 Then
+                    ghostDirection = "down"
+                ElseIf dirNum = 3 Then
+                    ghostDirection = "left"
+                ElseIf dirNum = 4 Then
+                    ghostDirection = "right"
+                End If
+
+            End If
+        Next
+    End Sub
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         'Handle 
         If direction = "up" Then
@@ -103,8 +160,16 @@ Public Class Form1
             pacman.Location = New Point(pacman.Location.X, pacman.Location.Y)
             PacmanView.AnimationChange(0)
         End If
-        'PacmanCollision()
+
         'LivesCount()
+
+        PacmanColl()
+        GhostColl()
+        RemoveDot()
+        Label1.Text = "Score: " + score.ToString
+    End Sub
+
+    Private Sub PacmanColl()
         For Each wall In obstacles
             If pacman.Bounds.IntersectsWith(wall.Bounds) Then
                 If direction = "up" Then
@@ -124,8 +189,6 @@ Public Class Form1
                 direction = "neutral"
             End If
         Next
-        RemoveDot()
-        Label1.Text = "Score: " + score.ToString
     End Sub
 
     Sub PlaceDots()
@@ -150,6 +213,7 @@ Public Class Form1
                     dotsArray(a, b) = pb
                     Controls.Add(pb)
                     dots.Add(pb)
+                    Exit For
                 End If
             Next
         Next
@@ -197,15 +261,8 @@ Public Class Form1
         If dots.Count = 0 Then
             'Dim finalScore = timerVal + Double.Parse(Label1.Text)
             'MessageBox.Show("Game Complete" + finalScore.ToString)
-            MessageBox.Show("Finished Game")
-            GameTimer.Stop()
-            'GameTimer.Dispose()
-            Timer1.Stop()
-            'Timer1
 
-            If score > highScore Then
-
-            End If
+            GameEnd()
 
 
         End If
@@ -230,6 +287,42 @@ Public Class Form1
 
     End Sub
 
+    Private Sub GameEnd()
+        GameTimer.Stop()
+        'GameTimer.Dispose()
+        Timer1.Stop()
+        Me.Hide()
+        TitleScreen.Show()
+        regName = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
 
+        currentPlayer = InputBox("You have beaten the high score. Please Enter your name", "Name Entry")
+        MessageBox.Show(currentPlayer.ToString)
+        'Set score and player to registry. 
+        'regName = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        'regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        'If regName.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True) Is Nothing Then
+        '    regName.CreateSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        '    regScore.CreateSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        '    regName.SetValue("Name", "")
+        '    regScore.SetValue("Score", "0")
+        'End If
+        'highScore = Integer.Parse(regScore.GetValue("Score").ToString)
+        'If score > highScore Then
+        '    regName.SetValue("Score", score.ToString)
+        '    regName.SetValue("HighScorePlayer", currentPlayer.ToString)
+        'End If
+
+
+
+        'regName.SetValue("HighScorePlayer", currentPlayer.ToString)
+        'regScore.SetValue("HighScore", score.ToString)
+        'regName.Close()
+        'regScore.Close()
+
+        MessageBox.Show("Thanks for playing. Try again?")
+
+
+    End Sub
 
 End Class
