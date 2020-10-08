@@ -161,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\maze\tile001.png" />
+    <None Include="Resources\GHOST%28Yellow%29_DOWNWARD01.png" />
+    <None Include="Resources\GHOST%28Red%29_DOWNWARD01.png" />
+    <None Include="Resources\GHOST%28Pink%29_DOWNWARD01.png" />
     <None Include="Resources\GHOST%28Blue%29_DOWNWARD01.png" />
     <None Include="Resources\SSBUWebsitePac-Man1.jpg" />
     <None Include="Resources\maze.png" />

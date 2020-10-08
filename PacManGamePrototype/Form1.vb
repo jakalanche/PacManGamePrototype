@@ -3,9 +3,12 @@ Imports System.Windows.Forms
 'Imports System.Drawing.Rectangle
 Public Class Form1
     Shared score As Integer
-    Shared totalLives As Integer = 3
+    Shared totalLives As Integer = 2
     Shared direction As String = "" 'Current direction as string
-    Shared ghostDirection As String = "up"
+    Shared ghost1Direction As String = "down"
+    Shared ghost2Direction As String = "up"
+    Shared ghost3Direction As String = "right"
+    Shared ghost4Direction As String = "left"
     Shared pacmanAnimation As Integer = 0 ' Current Animation eg. up, down, left right. 0 - 5
     Public Shared mapArray(,) As Integer = New Integer(,) _
                                                         {       '1           5              10             15             20             25
@@ -58,11 +61,9 @@ Public Class Form1
         If e.KeyCode = Keys.Up Then
             direction = "up"
             pacmanAnimation = 1
-
         ElseIf e.KeyCode = Keys.Down Then
             direction = "down"
             pacmanAnimation = 2
-
         ElseIf e.KeyCode = Keys.Left Then
             direction = "left"
             pacmanAnimation = 3
@@ -80,6 +81,11 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         'PictureBox1.
         pacman.SetBounds(8, 8, 8, 8)
+        'Ghost1.SetBounds(8, 8, 8, 8)
+        'Ghost2.SetBounds(8, 8, 8, 8)
+        'Ghost3.SetBounds(8, 8, 8, 8)
+        'Ghost4.SetBounds(8, 8, 8, 8)
+
         PlaceDots()
         PlaceWalls()
         PacmanView.DisplayMaze()
@@ -87,22 +93,22 @@ Public Class Form1
 
     Private Sub GhostDir()
         '1up, 2down, 3left, 4right
-        If direction = "up" Then
+        If ghost1Direction = "up" Then
             Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y - 1)
 
         End If
-        If direction = "down" Then
+        If ghost1Direction = "down" Then
             Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y + 1)
 
         End If
-        If direction = "left" Then
+        If ghost1Direction = "left" Then
             Ghost1.Location = New Point(Ghost1.Location.X - 1, Ghost1.Location.Y)
 
         End If
-        If direction = "right" Then
+        If ghost1Direction = "right" Then
             Ghost1.Location = New Point(Ghost1.Location.X + 1, Ghost1.Location.Y)
         End If
-        If direction = "neutral" Then
+        If ghost1Direction = "neutral" Then
             Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y)
         End If
     End Sub
@@ -110,29 +116,29 @@ Public Class Form1
     Private Sub GhostColl()
         For Each wall In obstacles
             If Ghost1.Bounds.IntersectsWith(wall.Bounds) Then
-                If ghostDirection = "up" Then
+                If ghost1Direction = "up" Then
                     Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y + 1)
-                    direction = "neutral"
-                ElseIf ghostDirection = "down" Then
+                    'direction = "neutral"
+                ElseIf ghost1Direction = "down" Then
                     Ghost1.Location = New Point(Ghost1.Location.X, Ghost1.Location.Y - 1)
-                    direction = "neutral"
-                ElseIf ghostDirection = "left" Then
+                    'direction = "neutral"
+                ElseIf ghost1Direction = "left" Then
                     Ghost1.Location = New Point(Ghost1.Location.X + 1, Ghost1.Location.Y)
-                    direction = "neutral"
-                ElseIf ghostDirection = "right" Then
+                    'direction = "neutral"
+                ElseIf ghost1Direction = "right" Then
                     Ghost1.Location = New Point(Ghost1.Location.X - 1, Ghost1.Location.Y)
-                    direction = "neutral"
+                    'direction = "neutral"
                 End If
                 'Handle random direction after collision
                 Dim dirNum As Integer = CInt(Math.Ceiling(Rnd() * 4)) + 1
                 If dirNum = 1 Then
-                    ghostDirection = "up"
+                    ghost1Direction = "up"
                 ElseIf dirNum = 2 Then
-                    ghostDirection = "down"
+                    ghost1Direction = "down"
                 ElseIf dirNum = 3 Then
-                    ghostDirection = "left"
+                    ghost1Direction = "left"
                 ElseIf dirNum = 4 Then
-                    ghostDirection = "right"
+                    ghost1Direction = "right"
                 End If
 
             End If
@@ -164,7 +170,14 @@ Public Class Form1
         'LivesCount()
 
         PacmanColl()
+        GhostDir()
         GhostColl()
+        Ghost2Dir()
+        Ghost2Coll()
+        Ghost3Dir()
+        Ghost3Coll()
+        Ghost4Dir()
+        Ghost4Coll()
         RemoveDot()
         Label1.Text = "Score: " + score.ToString
     End Sub
@@ -291,7 +304,7 @@ Public Class Form1
         GameTimer.Stop()
         'GameTimer.Dispose()
         Timer1.Stop()
-        Me.Hide()
+        Me.Dispose()
         TitleScreen.Show()
         regName = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
         regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
@@ -322,7 +335,162 @@ Public Class Form1
 
         MessageBox.Show("Thanks for playing. Try again?")
 
+    End Sub
+    Private Sub Ghost2Dir()
+        '1up, 2down, 3left, 4right
+        If ghost2Direction = "up" Then
+            Ghost2.Location = New Point(Ghost2.Location.X, Ghost2.Location.Y - 1)
 
+        End If
+        If ghost2Direction = "down" Then
+            Ghost2.Location = New Point(Ghost2.Location.X, Ghost2.Location.Y + 1)
+
+        End If
+        If ghost2Direction = "left" Then
+            Ghost2.Location = New Point(Ghost2.Location.X - 1, Ghost2.Location.Y)
+
+        End If
+        If ghost2Direction = "right" Then
+            Ghost2.Location = New Point(Ghost2.Location.X + 1, Ghost2.Location.Y)
+        End If
+        If ghost2Direction = "neutral" Then
+            Ghost2.Location = New Point(Ghost2.Location.X, Ghost2.Location.Y)
+        End If
+    End Sub
+    'Ghost collision detection
+    Private Sub Ghost2Coll()
+        For Each wall In obstacles
+            If Ghost2.Bounds.IntersectsWith(wall.Bounds) Then
+                If ghost2Direction = "up" Then
+                    Ghost2.Location = New Point(Ghost2.Location.X, Ghost2.Location.Y + 1)
+                    'direction = "neutral"
+                ElseIf ghost2Direction = "down" Then
+                    Ghost2.Location = New Point(Ghost2.Location.X, Ghost2.Location.Y - 1)
+                    'direction = "neutral"
+                ElseIf ghost2Direction = "left" Then
+                    Ghost2.Location = New Point(Ghost2.Location.X + 1, Ghost2.Location.Y)
+                    'direction = "neutral"
+                ElseIf ghost2Direction = "right" Then
+                    Ghost2.Location = New Point(Ghost2.Location.X - 1, Ghost2.Location.Y)
+                    'direction = "neutral"
+                End If
+                'Handle random direction after collision
+                Dim dirNum As Integer = CInt(Math.Ceiling(Rnd() * 4)) + 1
+                If dirNum = 1 Then
+                    ghost2Direction = "up"
+                ElseIf dirNum = 2 Then
+                    ghost2Direction = "down"
+                ElseIf dirNum = 3 Then
+                    ghost2Direction = "left"
+                ElseIf dirNum = 4 Then
+                    ghost2Direction = "right"
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub Ghost3Dir()
+        '1up, 3down, 3left, 4right
+        If ghost3Direction = "up" Then
+            Ghost3.Location = New Point(Ghost3.Location.X, Ghost3.Location.Y - 1)
+
+        End If
+        If ghost3Direction = "down" Then
+            Ghost3.Location = New Point(Ghost3.Location.X, Ghost3.Location.Y + 1)
+
+        End If
+        If ghost3Direction = "left" Then
+            Ghost3.Location = New Point(Ghost3.Location.X - 1, Ghost3.Location.Y)
+
+        End If
+        If ghost3Direction = "right" Then
+            Ghost3.Location = New Point(Ghost3.Location.X + 1, Ghost3.Location.Y)
+        End If
+        If ghost3Direction = "neutral" Then
+            Ghost3.Location = New Point(Ghost3.Location.X, Ghost3.Location.Y)
+        End If
+    End Sub
+    'Ghost collision detection
+    Private Sub Ghost3Coll()
+        For Each wall In obstacles
+            If Ghost3.Bounds.IntersectsWith(wall.Bounds) Then
+                If ghost3Direction = "up" Then
+                    Ghost3.Location = New Point(Ghost3.Location.X, Ghost3.Location.Y + 1)
+                    'direction = "neutral"
+                ElseIf ghost3Direction = "down" Then
+                    Ghost3.Location = New Point(Ghost3.Location.X, Ghost3.Location.Y - 1)
+                    'direction = "neutral"
+                ElseIf ghost3Direction = "left" Then
+                    Ghost3.Location = New Point(Ghost3.Location.X + 1, Ghost3.Location.Y)
+                    'direction = "neutral"
+                ElseIf ghost3Direction = "right" Then
+                    Ghost3.Location = New Point(Ghost3.Location.X - 1, Ghost3.Location.Y)
+                    'direction = "neutral"
+                End If
+                'Handle random direction after collision
+                Dim dirNum As Integer = CInt(Math.Ceiling(Rnd() * 4)) + 1
+                If dirNum = 1 Then
+                    ghost3Direction = "up"
+                ElseIf dirNum = 3 Then
+                    ghost3Direction = "down"
+                ElseIf dirNum = 3 Then
+                    ghost3Direction = "left"
+                ElseIf dirNum = 4 Then
+                    ghost3Direction = "right"
+                End If
+            End If
+        Next
+    End Sub
+    Private Sub Ghost4Dir()
+        '1up, 4down, 4left, 4right
+        If ghost4Direction = "up" Then
+            Ghost4.Location = New Point(Ghost4.Location.X, Ghost4.Location.Y - 1)
+
+        End If
+        If ghost4Direction = "down" Then
+            Ghost4.Location = New Point(Ghost4.Location.X, Ghost4.Location.Y + 1)
+
+        End If
+        If ghost4Direction = "left" Then
+            Ghost4.Location = New Point(Ghost4.Location.X - 1, Ghost4.Location.Y)
+
+        End If
+        If ghost4Direction = "right" Then
+            Ghost4.Location = New Point(Ghost4.Location.X + 1, Ghost4.Location.Y)
+        End If
+        If ghost4Direction = "neutral" Then
+            Ghost4.Location = New Point(Ghost4.Location.X, Ghost4.Location.Y)
+        End If
+    End Sub
+    'ghost collision detection
+    Private Sub Ghost4Coll()
+        For Each wall In obstacles
+            If Ghost4.Bounds.IntersectsWith(wall.Bounds) Then
+                If ghost4Direction = "up" Then
+                    Ghost4.Location = New Point(Ghost4.Location.X, Ghost4.Location.Y + 1)
+                    'direction = "neutral"
+                ElseIf ghost4Direction = "down" Then
+                    Ghost4.Location = New Point(Ghost4.Location.X, Ghost4.Location.Y - 1)
+                    'direction = "neutral"
+                ElseIf ghost4Direction = "left" Then
+                    Ghost4.Location = New Point(Ghost4.Location.X + 1, Ghost4.Location.Y)
+                    'direction = "neutral"
+                ElseIf ghost4Direction = "right" Then
+                    Ghost4.Location = New Point(Ghost4.Location.X - 1, Ghost4.Location.Y)
+                    'direction = "neutral"
+                End If
+                'handle random direction after collision
+                Dim dirnum As Integer = CInt(Math.Ceiling(Rnd() * 4)) + 1
+                If dirnum = 1 Then
+                    ghost4Direction = "up"
+                ElseIf dirnum = 4 Then
+                    ghost4Direction = "down"
+                ElseIf dirnum = 4 Then
+                    ghost4Direction = "left"
+                ElseIf dirnum = 4 Then
+                    ghost4Direction = "right"
+                End If
+            End If
+        Next
     End Sub
 
 End Class

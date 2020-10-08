@@ -30,16 +30,20 @@ Partial Class Form1
         Me.GameTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Ghost4 = New System.Windows.Forms.PictureBox()
+        Me.Ghost3 = New System.Windows.Forms.PictureBox()
+        Me.Ghost2 = New System.Windows.Forms.PictureBox()
         Me.Ghost1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.pacman = New System.Windows.Forms.PictureBox()
         Me.maze = New System.Windows.Forms.PictureBox()
+        CType(Me.Ghost4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ghost3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ghost2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Ghost1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pacman, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.maze, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -89,12 +93,43 @@ Partial Class Form1
         Me.Label4.TabIndex = 6
         Me.Label4.Text = "Time:"
         '
+        'Ghost4
+        '
+        Me.Ghost4.Image = Global.PacManGamePrototype.My.Resources.Resources.GHOST_Yellow__DOWNWARD01
+        Me.Ghost4.Location = New System.Drawing.Point(124, 88)
+        Me.Ghost4.Name = "Ghost4"
+        Me.Ghost4.Size = New System.Drawing.Size(8, 8)
+        Me.Ghost4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Ghost4.TabIndex = 7
+        Me.Ghost4.TabStop = False
+        '
+        'Ghost3
+        '
+        Me.Ghost3.Image = Global.PacManGamePrototype.My.Resources.Resources.GHOST_Red__DOWNWARD01
+        Me.Ghost3.Location = New System.Drawing.Point(82, 88)
+        Me.Ghost3.Name = "Ghost3"
+        Me.Ghost3.Size = New System.Drawing.Size(8, 8)
+        Me.Ghost3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Ghost3.TabIndex = 7
+        Me.Ghost3.TabStop = False
+        '
+        'Ghost2
+        '
+        Me.Ghost2.Image = Global.PacManGamePrototype.My.Resources.Resources.GHOST_Pink__DOWNWARD01
+        Me.Ghost2.Location = New System.Drawing.Point(96, 88)
+        Me.Ghost2.Name = "Ghost2"
+        Me.Ghost2.Size = New System.Drawing.Size(8, 8)
+        Me.Ghost2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Ghost2.TabIndex = 7
+        Me.Ghost2.TabStop = False
+        '
         'Ghost1
         '
         Me.Ghost1.Image = Global.PacManGamePrototype.My.Resources.Resources.GHOST_Blue__DOWNWARD01
-        Me.Ghost1.Location = New System.Drawing.Point(170, 115)
+        Me.Ghost1.Location = New System.Drawing.Point(110, 88)
         Me.Ghost1.Name = "Ghost1"
         Me.Ghost1.Size = New System.Drawing.Size(8, 8)
+        Me.Ghost1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Ghost1.TabIndex = 7
         Me.Ghost1.TabStop = False
         '
@@ -117,16 +152,6 @@ Partial Class Form1
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.PictureBox2.TabIndex = 3
         Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(158, 254)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(16, 16)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
         '
         'pacman
         '
@@ -157,22 +182,26 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(227, 288)
+        Me.Controls.Add(Me.Ghost4)
+        Me.Controls.Add(Me.Ghost3)
+        Me.Controls.Add(Me.Ghost2)
         Me.Controls.Add(Me.Ghost1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.pacman)
         Me.Controls.Add(Me.maze)
         Me.Name = "Form1"
         Me.Text = "Pacman"
+        CType(Me.Ghost4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ghost3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ghost2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Ghost1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pacman, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.maze, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -183,7 +212,6 @@ Partial Class Form1
     Friend WithEvents Timer1 As Timer
     Friend WithEvents maze As PictureBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label2 As Label
@@ -191,4 +219,7 @@ Partial Class Form1
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Ghost1 As PictureBox
+    Friend WithEvents Ghost2 As PictureBox
+    Friend WithEvents Ghost3 As PictureBox
+    Friend WithEvents Ghost4 As PictureBox
 End Class

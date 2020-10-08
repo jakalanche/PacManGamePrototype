@@ -8,6 +8,8 @@ Public Class TitleScreen
         ComboBox1.Items.Add("Grid")
         ComboBox1.Items.Add("Hexagon (Coming Soon)")
         ComboBox1.Items.Add("Random Graph")
+        Label5.Text = ""
+        Label6.Text = ""
 
         'Dim regName As RegistryKey
         'Dim regScore As RegistryKey
@@ -36,6 +38,8 @@ Public Class TitleScreen
         If ComboBox1.SelectedIndex = 0 Then
             Me.Hide()
             Form1.Show()
+            'Dim gameScreen As Form1 = New Form1
+            'gameScreen.Show()
         Else
             MessageBox.Show("Map yet to be developed. Try another.")
         End If
