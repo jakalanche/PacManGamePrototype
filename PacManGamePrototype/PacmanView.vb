@@ -1,5 +1,5 @@
 ﻿Class PacmanView
-
+    'Display maze to user
     Public Shared Sub DisplayMaze()
         Dim maze As Label = New Label With {
             .BackgroundImage = My.Resources.maze,
@@ -11,7 +11,7 @@
         Form1.Controls.Add(maze)
 
     End Sub
-
+    'Display pacman animation
     Public Shared Sub AnimationChange(pacAni)
         If pacAni = 1 Then 'up
             Form1.pacman.Image = My.Resources.pacman_up
@@ -26,6 +26,14 @@
         End If
         Form1.pacman.Refresh()
     End Sub
-
+    'Display lives on screen. 
+    Public Shared Sub LivesDisplay(lives As Integer)
+        If lives = 1 Then
+            Form1.PictureBox3.Hide()
+        ElseIf lives = 0 Then
+            Form1.PictureBox3.Hide()
+            Form1.PictureBox2.Hide()
+        End If
+    End Sub
 
 End Class

@@ -50,11 +50,10 @@ Public Class Form1
     Shared dotsArray(a, b) As PictureBox 'dots picturebox array
     Shared wallArray(a, b) As PictureBox ' 
     Shared timerVal As Double = 300.0
-    Shared highScore As Integer
-    Shared highScorePlayer As String
     Shared currentPlayer
     Public Shared regName As RegistryKey
     Public Shared regScore As RegistryKey
+    Dim powerUp As Boolean = False
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         'MsgBox(e.KeyCode.ToString)
@@ -80,7 +79,7 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         'PictureBox1.
-        pacman.SetBounds(8, 8, 8, 8)
+        'pacman.SetBounds(8, 8, 8, 8)
         'Ghost1.SetBounds(8, 8, 8, 8)
         'Ghost2.SetBounds(8, 8, 8, 8)
         'Ghost3.SetBounds(8, 8, 8, 8)
@@ -178,7 +177,10 @@ Public Class Form1
         Ghost3Coll()
         Ghost4Dir()
         Ghost4Coll()
+        PacmanCollGhost()
         RemoveDot()
+
+
         Label1.Text = "Score: " + score.ToString
     End Sub
 
@@ -204,6 +206,19 @@ Public Class Form1
         Next
     End Sub
 
+    Private Sub PacmanCollGhost()
+        If pacman.Bounds.IntersectsWith(Ghost1.Bounds) Or pacman.Bounds.IntersectsWith(Ghost2.Bounds) Or pacman.Bounds.IntersectsWith(Ghost3.Bounds) Or pacman.Bounds.IntersectsWith(Ghost4.Bounds) Then
+            If powerUp = False Then
+                pacman.SetBounds(8, 8, 8, 8)
+                totalLives -= 1
+                PacmanView.LivesDisplay(totalLives)
+                If totalLives = 0 Then
+                    GameEnd()
+                End If
+            End If
+        End If
+    End Sub
+
     Sub PlaceDots()
         Dim dotsArray(mapArray.GetUpperBound(0), mapArray.GetUpperBound(1)) As PictureBox
         Dim dotNo As Integer = 0 ' dot count
@@ -226,7 +241,7 @@ Public Class Form1
                     dotsArray(a, b) = pb
                     Controls.Add(pb)
                     dots.Add(pb)
-                    Exit For
+                    'Exit For 'For test purposes.
                 End If
             Next
         Next
@@ -310,7 +325,7 @@ Public Class Form1
         regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
 
         currentPlayer = InputBox("You have beaten the high score. Please Enter your name", "Name Entry")
-        MessageBox.Show(currentPlayer.ToString)
+        'MessageBox.Show(currentPlayer.ToString)
         'Set score and player to registry. 
         'regName = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
         'regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
@@ -333,9 +348,11 @@ Public Class Form1
         'regName.Close()
         'regScore.Close()
 
-        MessageBox.Show("Thanks for playing. Try again?")
+        'MessageBox.Show("Thanks for playing. Try again?")
 
     End Sub
+
+
     Private Sub Ghost2Dir()
         '1up, 2down, 3left, 4right
         If ghost2Direction = "up" Then

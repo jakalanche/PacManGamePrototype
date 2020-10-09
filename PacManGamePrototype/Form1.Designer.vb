@@ -156,7 +156,7 @@ Partial Class Form1
         'pacman
         '
         Me.pacman.Image = Global.PacManGamePrototype.My.Resources.Resources.pac_neutral
-        Me.pacman.Location = New System.Drawing.Point(105, 180)
+        Me.pacman.Location = New System.Drawing.Point(109, 184)
         Me.pacman.Name = "pacman"
         Me.pacman.Size = New System.Drawing.Size(8, 8)
         Me.pacman.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage

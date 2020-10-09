@@ -1,10 +1,14 @@
-﻿Imports Microsoft.Win32
+﻿Imports System.Security.Cryptography.X509Certificates
+Imports Microsoft.Win32
 
 Public Class TitleScreen
+    Public Shared nameKey As RegistryKey
+    Public Shared scoreKey As RegistryKey
+    Public Shared highScorePlayer As String
+    Public Shared highScore As Integer
 
     Private Sub TitleScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
+        'RegistrySetup()
         ComboBox1.Items.Add("Grid")
         ComboBox1.Items.Add("Hexagon (Coming Soon)")
         ComboBox1.Items.Add("Random Graph")
@@ -43,6 +47,26 @@ Public Class TitleScreen
         Else
             MessageBox.Show("Map yet to be developed. Try another.")
         End If
+    End Sub
+
+    Public Sub RegistrySetup()
+        nameKey = Registry.LocalMachine.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        Dim name = nameKey.GetValue("Name")
+        If name Is Nothing Then
+            nameKey.CreateSubKey("Name", True)
+        Else
+            highScorePlayer = name.ToString
+        End If
+        nameKey.Close()
+
+        scoreKey = Registry.LocalMachine.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
+        Dim score = scoreKey.GetValue("Score")
+        If score Is Nothing Then
+            scoreKey.CreateSubKey("Score", True)
+        Else
+            highScore = Integer.Parse(CType(score, String))
+        End If
+        scoreKey.Close()
     End Sub
 
 End Class
