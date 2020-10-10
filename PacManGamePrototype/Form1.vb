@@ -78,16 +78,48 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
-        'PictureBox1.
-        'pacman.SetBounds(8, 8, 8, 8)
-        'Ghost1.SetBounds(8, 8, 8, 8)
-        'Ghost2.SetBounds(8, 8, 8, 8)
-        'Ghost3.SetBounds(8, 8, 8, 8)
-        'Ghost4.SetBounds(8, 8, 8, 8)
-
         PlaceDots()
         PlaceWalls()
         PacmanView.DisplayMaze()
+    End Sub
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        'Handle 
+        If direction = "up" Then
+            pacman.Location = New Point(pacman.Location.X, pacman.Location.Y - 1)
+
+        End If
+        If direction = "down" Then
+            pacman.Location = New Point(pacman.Location.X, pacman.Location.Y + 1)
+
+        End If
+        If direction = "left" Then
+            pacman.Location = New Point(pacman.Location.X - 1, pacman.Location.Y)
+
+        End If
+        If direction = "right" Then
+            pacman.Location = New Point(pacman.Location.X + 1, pacman.Location.Y)
+        End If
+        If direction = "neutral" Then
+            pacman.Location = New Point(pacman.Location.X, pacman.Location.Y)
+            PacmanView.AnimationChange(0)
+        End If
+
+        'LivesCount()
+
+        PacmanColl()
+        GhostDir()
+        GhostColl()
+        Ghost2Dir()
+        Ghost2Coll()
+        Ghost3Dir()
+        Ghost3Coll()
+        Ghost4Dir()
+        Ghost4Coll()
+        PacmanCollGhost()
+        RemoveDot()
+
+
+        Label1.Text = "Score: " + score.ToString
     End Sub
 
     Private Sub GhostDir()
@@ -142,46 +174,6 @@ Public Class Form1
 
             End If
         Next
-    End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        'Handle 
-        If direction = "up" Then
-            pacman.Location = New Point(pacman.Location.X, pacman.Location.Y - 1)
-
-        End If
-        If direction = "down" Then
-            pacman.Location = New Point(pacman.Location.X, pacman.Location.Y + 1)
-
-        End If
-        If direction = "left" Then
-            pacman.Location = New Point(pacman.Location.X - 1, pacman.Location.Y)
-
-        End If
-        If direction = "right" Then
-            pacman.Location = New Point(pacman.Location.X + 1, pacman.Location.Y)
-        End If
-        If direction = "neutral" Then
-            pacman.Location = New Point(pacman.Location.X, pacman.Location.Y)
-            PacmanView.AnimationChange(0)
-        End If
-
-        'LivesCount()
-
-        PacmanColl()
-        GhostDir()
-        GhostColl()
-        Ghost2Dir()
-        Ghost2Coll()
-        Ghost3Dir()
-        Ghost3Coll()
-        Ghost4Dir()
-        Ghost4Coll()
-        PacmanCollGhost()
-        RemoveDot()
-
-
-        Label1.Text = "Score: " + score.ToString
     End Sub
 
     Private Sub PacmanColl()
