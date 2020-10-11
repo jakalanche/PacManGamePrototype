@@ -1,20 +1,21 @@
-﻿Imports System.Security.Cryptography.X509Certificates
+﻿Imports System.IO
+Imports System.Security.Cryptography.X509Certificates
+Imports Microsoft.VisualBasic.FileIO
 Imports Microsoft.Win32
 
 Public Class TitleScreen
-    Public Shared nameKey As RegistryKey
-    Public Shared scoreKey As RegistryKey
     Public Shared highScorePlayer As String
-    Public Shared highScore As Integer
+    Public Shared highScore As String
 
     Private Sub TitleScreen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'RegistrySetup()
         ComboBox1.Items.Add("Grid")
         ComboBox1.Items.Add("Hexagon (Coming Soon)")
         ComboBox1.Items.Add("Random Graph")
-        Label5.Text = ""
-        Label6.Text = ""
-        RegistrySetup()
+        HighScoreImport()
+        Label5.Text = highScorePlayer
+        Label6.Text = highScore
+
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If ComboBox1.SelectedIndex = 0 Then
@@ -27,24 +28,29 @@ Public Class TitleScreen
         End If
     End Sub
 
-    Public Sub RegistrySetup()
-        nameKey = Registry.LocalMachine.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        Dim name = nameKey.GetValue("Name")
-        If name Is Nothing Then
-            nameKey.CreateSubKey("Name", True)
-        Else
-            highScorePlayer = name.ToString
+    Public Sub HighScoreImport()
+        If Directory.Exists("c:\Pacman") = False Then
+            Directory.CreateDirectory("c:\Pacman")
         End If
-        nameKey.Close()
+        If File.Exists("c:\Pacman\Pacman.txt") = False Then
+            Dim fs As FileStream = File.Create("c:\Pacman\Pacman.txt")
+        Else
+            Using read As New TextFieldParser("c:\Pacman\Pacman.txt")
+                read.TextFieldType = FileIO.FieldType.Delimited
+                read.SetDelimiters(",")
+                Dim row As String()
+                While Not read.EndOfData
+                    Try
+                        row = read.ReadFields()
+                        highScorePlayer = row(0)
+                        highScore = row(1)
+                    Catch ex As Exception
+                    End Try
+                End While
+            End Using
 
-        scoreKey = Registry.LocalMachine.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        Dim score = scoreKey.GetValue("Score")
-        If score Is Nothing Then
-            scoreKey.CreateSubKey("Score", True)
-        Else
-            highScore = Integer.Parse(CType(score, String))
         End If
-        scoreKey.Close()
+
     End Sub
 
 End Class

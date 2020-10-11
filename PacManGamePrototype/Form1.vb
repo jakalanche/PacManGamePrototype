@@ -1,9 +1,11 @@
 ﻿Imports Microsoft.Win32
+Imports System.IO
+Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 'Imports System.Drawing.Rectangle
 Public Class Form1
     Shared score As Integer
-    Shared totalLives As Integer = 2
+    Shared totalLives As Integer
     Shared direction As String = "" 'Current direction as string
     Shared ghost1Direction As String = "down"
     Shared ghost2Direction As String = "up"
@@ -49,10 +51,10 @@ Public Class Form1
     Shared dots As List(Of PictureBox) = New List(Of PictureBox)
     Shared dotsArray(a, b) As PictureBox 'dots picturebox array
     Shared wallArray(a, b) As PictureBox ' 
-    Shared timerVal As Double = 300.0
-    Shared currentPlayer
-    Public Shared regName As RegistryKey
-    Public Shared regScore As RegistryKey
+    Shared timerVal As Double
+    Dim currentPlayer As String
+    Dim currentScore As Integer
+    Dim currentTime As Integer
     Dim powerUp As Boolean = False
     'Handle Movement using keys
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
@@ -81,6 +83,8 @@ Public Class Form1
         PlaceDots()
         PlaceWalls()
         PacmanView.DisplayMaze()
+        totalLives = 2
+        timerVal = 300.0
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         'Handle 
@@ -281,7 +285,7 @@ Public Class Form1
         If dots.Count = 0 Then
             'Dim finalScore = timerVal + Double.Parse(Label1.Text)
             'MessageBox.Show("Game Complete" + finalScore.ToString)
-
+            currentTime = timerVal
             GameEnd()
 
 
@@ -313,35 +317,18 @@ Public Class Form1
         Timer1.Stop()
         Me.Dispose()
         TitleScreen.Show()
-        regName = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-
         currentPlayer = InputBox("You have beaten the high score. Please Enter your name", "Name Entry")
-        'MessageBox.Show(currentPlayer.ToString)
-        'Set score and player to registry. 
-        'regName = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        'regScore = My.Computer.Registry.CurrentUser.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        'If regName.OpenSubKey("HKEY_CURRENT_USER\Software\Pacman", True) Is Nothing Then
-        '    regName.CreateSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        '    regScore.CreateSubKey("HKEY_CURRENT_USER\Software\Pacman", True)
-        '    regName.SetValue("Name", "")
-        '    regScore.SetValue("Score", "0")
-        'End If
-        'highScore = Integer.Parse(regScore.GetValue("Score").ToString)
-        'If score > highScore Then
-        '    regName.SetValue("Score", score.ToString)
-        '    regName.SetValue("HighScorePlayer", currentPlayer.ToString)
-        'End If
+        currentScore = score + Convert.ToInt32(currentTime)
+        If currentScore > TitleScreen.highScore Then
 
 
+            Dim write As StreamWriter = New StreamWriter("C:\Pacman\Pacman.txt", False)
+            write.WriteLine(currentPlayer + ", " + currentScore.ToString)
+            write.Close()
+            TitleScreen.Label5.Text = currentPlayer
+            TitleScreen.Label6.Text = currentScore.ToString
 
-        'regName.SetValue("HighScorePlayer", currentPlayer.ToString)
-        'regScore.SetValue("HighScore", score.ToString)
-        'regName.Close()
-        'regScore.Close()
-
-        'MessageBox.Show("Thanks for playing. Try again?")
-
+        End If
     End Sub
 
 
