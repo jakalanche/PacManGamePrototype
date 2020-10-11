@@ -28,7 +28,6 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GameTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Ghost4 = New System.Windows.Forms.PictureBox()
         Me.Ghost3 = New System.Windows.Forms.PictureBox()
@@ -74,15 +73,6 @@ Partial Class Form1
         'GameTimer
         '
         Me.GameTimer.Enabled = True
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 249)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(38, 13)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Score:"
         '
         'Label4
         '
@@ -187,7 +177,6 @@ Partial Class Form1
         Me.Controls.Add(Me.Ghost2)
         Me.Controls.Add(Me.Ghost1)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.PictureBox2)
@@ -216,7 +205,6 @@ Partial Class Form1
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Label2 As Label
     Friend WithEvents GameTimer As Timer
-    Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Ghost1 As PictureBox
     Friend WithEvents Ghost2 As PictureBox
