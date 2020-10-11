@@ -10,7 +10,17 @@
          <KItem Name="PacManGamePrototype.PacmanView.AnimationChange" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000B.html" LinkGroup="PacManGamePrototype">AnimationChange Method</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000002F.html" LinkGroup="PacManGamePrototype">AnimationChange Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.Button1_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000035.html" LinkGroup="PacManGamePrototype">Button1_Click Method</LItem>
       </Links>
    </Context>
    
@@ -20,7 +30,7 @@
          <KItem Name="PacManGamePrototype.PacmanView.DisplayMaze" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000A.html" LinkGroup="PacManGamePrototype">DisplayMaze Method</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000002E.html" LinkGroup="PacManGamePrototype">DisplayMaze Method</LItem>
       </Links>
    </Context>
    
@@ -29,7 +39,16 @@
          <KItem Name="PacManGamePrototype.Form1.Dispose" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000005_overloads--.html" LinkGroup="PacManGamePrototype">Dispose Method</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000027_overloads--.html" LinkGroup="PacManGamePrototype">Dispose Method</LItem>
+      </Links>
+   </Context>
+   
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.Dispose" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000037_overloads--.html" LinkGroup="PacManGamePrototype">Dispose Method</LItem>
       </Links>
    </Context>
    
@@ -46,10 +65,190 @@
 
    <Context>
       <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Form1_KeyDown" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000015.html" LinkGroup="PacManGamePrototype">Form1_KeyDown Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Form1_Load" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000016.html" LinkGroup="PacManGamePrototype">Form1_Load Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.GameEnd" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000020.html" LinkGroup="PacManGamePrototype">GameEnd Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.GameTimer_Tick" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000001F.html" LinkGroup="PacManGamePrototype">GameTimer_Tick Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Ghost2Coll" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000022.html" LinkGroup="PacManGamePrototype">Ghost2Coll Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Ghost2Dir" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000021.html" LinkGroup="PacManGamePrototype">Ghost2Dir Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Ghost3Coll" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000024.html" LinkGroup="PacManGamePrototype">Ghost3Coll Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Ghost3Dir" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000023.html" LinkGroup="PacManGamePrototype">Ghost3Dir Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Ghost4Coll" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000026.html" LinkGroup="PacManGamePrototype">Ghost4Coll Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Ghost4Dir" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000025.html" LinkGroup="PacManGamePrototype">Ghost4Dir Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.GhostColl" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000019.html" LinkGroup="PacManGamePrototype">GhostColl Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.GhostDir" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000018.html" LinkGroup="PacManGamePrototype">GhostDir Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.HighScoreImport" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000036.html" LinkGroup="PacManGamePrototype">HighScoreImport Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.InitializeComponent" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000029.html" LinkGroup="PacManGamePrototype">InitializeComponent Method {PacManGamePrototype.Form1}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.InitializeComponent" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000039.html" LinkGroup="PacManGamePrototype">InitializeComponent Method {PacManGamePrototype.TitleScreen}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.PacmanView.LivesDisplay" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000030.html" LinkGroup="PacManGamePrototype">LivesDisplay Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
          <KItem Name="PacManGamePrototype" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000D.html" LinkGroup="PacManGamePrototype">PacManGamePrototype Namespace</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000003B.html" LinkGroup="PacManGamePrototype">PacManGamePrototype Namespace</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.PacmanColl" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000001A.html" LinkGroup="PacManGamePrototype">PacmanColl Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.PacmanCollGhost" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000001B.html" LinkGroup="PacManGamePrototype">PacmanCollGhost Method</LItem>
       </Links>
    </Context>
    
@@ -59,7 +258,7 @@
          <KItem Name="PacManGamePrototype.PacmanController" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000008.html" LinkGroup="PacManGamePrototype">PacmanController Class</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000002C.html" LinkGroup="PacManGamePrototype">PacmanController Class</LItem>
       </Links>
    </Context>
    
@@ -69,7 +268,7 @@
          <KItem Name="PacManGamePrototype.PacmanView" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000009.html" LinkGroup="PacManGamePrototype">PacmanView Class</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000002D.html" LinkGroup="PacManGamePrototype">PacmanView Class</LItem>
       </Links>
    </Context>
    
@@ -79,7 +278,7 @@
          <KItem Name="PacManGamePrototype.Form1.PlaceDots" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000002.html" LinkGroup="PacManGamePrototype">PlaceDots Method</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000001C.html" LinkGroup="PacManGamePrototype">PlaceDots Method</LItem>
       </Links>
    </Context>
    
@@ -89,7 +288,7 @@
          <KItem Name="PacManGamePrototype.Form1.PlaceWalls" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000003.html" LinkGroup="PacManGamePrototype">PlaceWalls Method</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000001D.html" LinkGroup="PacManGamePrototype">PlaceWalls Method</LItem>
       </Links>
    </Context>
    
@@ -99,7 +298,7 @@
          <KItem Name="PacManGamePrototype.Form1.RemoveDot" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000004.html" LinkGroup="PacManGamePrototype">RemoveDot Method</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000001E.html" LinkGroup="PacManGamePrototype">RemoveDot Method</LItem>
       </Links>
    </Context>
    
@@ -109,7 +308,197 @@
          <KItem Name="SOLUTION-WIDE PROPERTIES Reference" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000C.html" LinkGroup="PacManGamePrototype">SOLUTION-WIDE PROPERTIES Reference</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000003A.html" LinkGroup="PacManGamePrototype">SOLUTION-WIDE PROPERTIES Reference</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.Timer1_Tick" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000017.html" LinkGroup="PacManGamePrototype">Timer1_Tick Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000031.html" LinkGroup="PacManGamePrototype">TitleScreen Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.TitleScreen_Load" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000034.html" LinkGroup="PacManGamePrototype">TitleScreen_Load Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.a" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000A.html" LinkGroup="PacManGamePrototype">a Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.b" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000B.html" LinkGroup="PacManGamePrototype">b Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.components" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000028.html" LinkGroup="PacManGamePrototype">components Field {PacManGamePrototype.Form1}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.components" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000038.html" LinkGroup="PacManGamePrototype">components Field {PacManGamePrototype.TitleScreen}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.currentPlayer" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000011.html" LinkGroup="PacManGamePrototype">currentPlayer Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.currentScore" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000012.html" LinkGroup="PacManGamePrototype">currentScore Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.currentTime" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000013.html" LinkGroup="PacManGamePrototype">currentTime Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.direction" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000003.html" LinkGroup="PacManGamePrototype">direction Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.dots" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000D.html" LinkGroup="PacManGamePrototype">dots Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.dotsArray" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000E.html" LinkGroup="PacManGamePrototype">dotsArray Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.ghost1Direction" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000004.html" LinkGroup="PacManGamePrototype">ghost1Direction Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.ghost2Direction" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000005.html" LinkGroup="PacManGamePrototype">ghost2Direction Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.ghost3Direction" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000006.html" LinkGroup="PacManGamePrototype">ghost3Direction Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.ghost4Direction" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000007.html" LinkGroup="PacManGamePrototype">ghost4Direction Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.highScore" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000033.html" LinkGroup="PacManGamePrototype">highScore Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.TitleScreen.highScorePlayer" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000032.html" LinkGroup="PacManGamePrototype">highScorePlayer Field</LItem>
       </Links>
    </Context>
    
@@ -119,7 +508,77 @@
          <KItem Name="PacManGamePrototype.Form1.mapArray" />
       </Keywords>
       <Links>
-         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000001.html" LinkGroup="PacManGamePrototype">mapArray Field</LItem>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000009.html" LinkGroup="PacManGamePrototype">mapArray Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.obstacles" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000C.html" LinkGroup="PacManGamePrototype">obstacles Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.pacmanAnimation" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000008.html" LinkGroup="PacManGamePrototype">pacmanAnimation Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.powerUp" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000014.html" LinkGroup="PacManGamePrototype">powerUp Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.score" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000001.html" LinkGroup="PacManGamePrototype">score Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.timerVal" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000010.html" LinkGroup="PacManGamePrototype">timerVal Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.totalLives" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_0000000000000002.html" LinkGroup="PacManGamePrototype">totalLives Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="PacManGamePrototype.Form1.wallArray" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:PacManGamePrototype.chm::/topic_000000000000000F.html" LinkGroup="PacManGamePrototype">wallArray Field</LItem>
       </Links>
    </Context>
    

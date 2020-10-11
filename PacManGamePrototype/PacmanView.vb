@@ -35,5 +35,4 @@
             Form1.PictureBox2.Hide()
         End If
     End Sub
-
 End Class

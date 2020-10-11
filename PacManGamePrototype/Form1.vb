@@ -107,9 +107,6 @@ Public Class Form1
             pacman.Location = New Point(pacman.Location.X, pacman.Location.Y)
             PacmanView.AnimationChange(0)
         End If
-
-        'LivesCount()
-
         PacmanColl()
         GhostDir()
         GhostColl()
@@ -121,7 +118,6 @@ Public Class Form1
         Ghost4Coll()
         PacmanCollGhost()
         RemoveDot()
-
 
         Label1.Text = "Score: " + score.ToString
     End Sub
@@ -205,7 +201,7 @@ Public Class Form1
     Private Sub PacmanCollGhost()
         If pacman.Bounds.IntersectsWith(Ghost1.Bounds) Or pacman.Bounds.IntersectsWith(Ghost2.Bounds) Or pacman.Bounds.IntersectsWith(Ghost3.Bounds) Or pacman.Bounds.IntersectsWith(Ghost4.Bounds) Then
             If powerUp = False Then
-                pacman.SetBounds(8, 8, 8, 8)
+                pacman.SetBounds(109, 184, 8, 8)
                 totalLives -= 1
                 PacmanView.LivesDisplay(totalLives)
                 If totalLives = 0 Then
@@ -266,7 +262,6 @@ Public Class Form1
                 End If
             Next
         Next
-
     End Sub
     Sub RemoveDot()
         Dim dotDelete As PictureBox
@@ -287,28 +282,16 @@ Public Class Form1
             'MessageBox.Show("Game Complete" + finalScore.ToString)
             currentTime = timerVal
             GameEnd()
-
-
         End If
-        ''Dim dotsArray(mapArray.GetUpperBound(0), mapArray.GetUpperBound(1)) As PictureBox
-        'For a = dotsArray.GetLowerBound(0) To dotsArray.GetUpperBound(0)
-        '    For b = dotsArray.GetLowerBound(1) To dotsArray.GetUpperBound(1)
-        '        If pacman.Bounds.IntersectsWith(dotsArray(a, b).Bounds) Then
-        '            score += 1
-        '        End If
-        '    Next
-        'Next
     End Sub
 
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
-
         If timerVal <> 0 Then
             timerVal -= 0.1
             Label2.Text = Math.Round(timerVal, 1).ToString
         Else
             timerVal = 0
         End If
-
     End Sub
 
     Private Sub GameEnd()
@@ -316,19 +299,17 @@ Public Class Form1
         'GameTimer.Dispose()
         Timer1.Stop()
         Me.Dispose()
-        TitleScreen.Show()
-        currentPlayer = InputBox("You have beaten the high score. Please Enter your name", "Name Entry")
-        currentScore = score + Convert.ToInt32(currentTime)
+        currentTime = Convert.ToInt32(timerVal)
+        currentScore = score + currentTime
         If currentScore > TitleScreen.highScore Then
-
-
+            currentPlayer = InputBox("You have beaten the high score. Please Enter your name", "Name Entry")
             Dim write As StreamWriter = New StreamWriter("C:\Pacman\Pacman.txt", False)
             write.WriteLine(currentPlayer + ", " + currentScore.ToString)
             write.Close()
             TitleScreen.Label5.Text = currentPlayer
             TitleScreen.Label6.Text = currentScore.ToString
-
         End If
+        TitleScreen.Show()
     End Sub
 
 
